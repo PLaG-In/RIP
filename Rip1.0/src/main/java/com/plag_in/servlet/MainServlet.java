@@ -34,7 +34,7 @@ public class MainServlet extends HttpServlet {
         if (params.isEmpty()) {
             showAddingForm(writer);
         } else if (params.get("method")[0].equals("showAllCars")) {
-            printAllCars(context, writer);
+            showAllCars(context, writer);
         } else if (params.get("method")[0].equals("showAddingForm")) {
             showAddingForm(writer);
         } else {
@@ -86,17 +86,16 @@ public class MainServlet extends HttpServlet {
                         "</html>");
     }
 
-    private void printAllCars(ServletContext context, PrintWriter writer) throws IOException {
+    private void showAllCars(ServletContext context, PrintWriter writer) throws IOException {
         @SuppressWarnings("unchecked")
         ArrayList<Cars> carList = (ArrayList<Cars>) context.getAttribute(sDataKeepName);
         String carsOutput = "";
         for (Cars car : carList) {
-            carsOutput +=
-                    "Mark : " + car.getMark() +
-                            "<br>    Model : " + car.getModel() +
-                            "<br>    Color : " + car.getColor() +
-                            "<br>    Year of create : " + car.getYearOfCreate() +
-                            "<br>";
+            carsOutput += "Mark : " + car.getMark() +
+                         "<br>    Model : " + car.getModel() +
+                         "<br>    Color : " + car.getColor() +
+                         "<br>    Year of create : " + car.getYearOfCreate() +
+                         "<br>";
         }
         if (carsOutput.length() == 0) {
             carsOutput = "<h1>No orders for now!</h1>";
