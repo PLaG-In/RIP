@@ -1,4 +1,4 @@
-package com.plag_in.servlet;
+package com.plag_in.servlet.entities;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

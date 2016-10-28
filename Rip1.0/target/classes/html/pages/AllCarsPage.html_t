@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+        %#m
+
+        <form action="warehouse" method="GET">
+            <input type="hidden" name="method" value="showAddingForm">
+            <input type="submit" value="Show adding form">
+        </form>
+    </body>
+</html>

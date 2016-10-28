@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <form action="warehouse" method="POST">
+            Mark :<br>
+            <input type="text" name="mark">
+            <br>
+            Model :<br>
+            <input type="text" name="model">
+            <br>
+            Color :<br>
+            <input type="text" name="color">
+            <br>
+            Year of create :
+            <br>
+            <input type="number" name="yearOfCreate">
+            <br><br>
+            <input type="hidden" name="method" value="addDrink">
+            <input type="submit" value="Submit">
+        </form>
+        <br><br><br><br>
+        <form action="warehouse" method="GET">
+            <input type="hidden" name="method" value="showAllCars">
+            <input type="submit" value="Show all cars">
+        </form>
+    </body>
+</html>

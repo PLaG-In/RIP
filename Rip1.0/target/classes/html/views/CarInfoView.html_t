@@ -1,0 +1,6 @@
+<section class="carInfo">
+    <p>Mark : %#s</p>
+    <p>    Model : %#s</p>
+    <p>    Color : %#s</p>
+    <p>    Year of create : %#s</p>
+</section><br><br>

@@ -1,24 +1,26 @@
 package com.plag_in.servlet;
 
-import javax.servlet.ServletContext;
+import com.plag_in.servlet.controllers.CarsController;
+import com.plag_in.servlet.controllers.ViewResolver;
+import com.plag_in.servlet.utils.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Map;
 
 public class MainServlet extends HttpServlet {
-    private final static String sDataKeepName = "dataKeep";
+
+    private ViewResolver mViewResolver;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        ArrayList<Cars> carList = new ArrayList<Cars>();
-        getServletContext().setAttribute(sDataKeepName, carList);
+        mViewResolver = new ViewResolver(getServletContext());
+        Logger.setServletContext(getServletContext());
     }
 
     @Override
@@ -29,15 +31,15 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
-        ServletContext context = req.getServletContext();
         Map<String, String[]> params = req.getParameterMap();
         if (params.isEmpty()) {
-            showAddingForm(writer);
+            mViewResolver.showAddingView(writer);
         } else if (params.get("method")[0].equals("showAllCars")) {
-            showAllCars(context, writer);
+            mViewResolver.showCarsView(writer, CarsController.getAllCars());
         } else if (params.get("method")[0].equals("showAddingForm")) {
-            showAddingForm(writer);
+            mViewResolver.showAddingView(writer);
         } else {
+            Logger.log(Logger.LogLevel.INFO, "Unknown post request method - " + req.getMethod());
             super.doGet(req, resp);
         }
     }
@@ -45,23 +47,22 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
-        ServletContext context = req.getServletContext();
         Map<String, String[]> params = req.getParameterMap();
         if (params.get("method")[0].equals("addCar")) {
-            addCar(
-                    context,
+            CarsController.addCar(
                     params.get("mark")[0],
                     params.get("model")[0],
                     params.get("color")[0],
-                    params.get("yearOfCreate")[0]);
+                    Integer.valueOf(params.get("yearOfCreate")[0]));
 
-            showAddingForm(writer);
+            mViewResolver.showAddingView(writer);
         } else {
+            Logger.log(Logger.LogLevel.INFO, "Unknown post request method - " + req.getMethod());
             super.doPost(req, resp);
         }
     }
 
-    private void showAddingForm(PrintWriter writer) throws IOException {
+    /*private void showAddingForm(PrintWriter writer) throws IOException {
         writer.print("<!DOCTYPE html>\n" +
                         "<html>\n" +
                         "<body>\n");
@@ -132,6 +133,6 @@ public class MainServlet extends HttpServlet {
             carList.add(new Cars(mark, model, color, year));
             context.setAttribute(sDataKeepName, carList);
         }
-    }
+    }*/
 
 }
