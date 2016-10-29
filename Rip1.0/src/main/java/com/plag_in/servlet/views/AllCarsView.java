@@ -35,14 +35,14 @@ public class AllCarsView extends View {
                     build().getHtmlText());
         } else {
             for (Cars car : cars) {
-                pageParameters.add(createDrinkView(car));
+                pageParameters.add(createCarView(car));
             }
         }
         builder.addMultipleParameter(pageParameters);
         mHtmlText = builder.build().getHtmlText();
     }
 
-    private String createDrinkView(final Cars car)
+    private String createCarView(final Cars car)
             throws IOException, HtmlTemplateException {
         return HtmlTemplate.newBuilder(mContext.getRealPath(PATH_TO_DRINK_INFO_VIEW))
                 .addSingleParameter(car.getMark())

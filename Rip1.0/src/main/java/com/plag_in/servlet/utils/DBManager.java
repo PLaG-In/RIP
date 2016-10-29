@@ -9,9 +9,9 @@ import java.util.ArrayList;
  */
 public class DBManager {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/cars_db";
-    private static final String USER = "Plag";
-    private static final String PASSWORD = "Qwerty789";
+    private static final String URL = "jdbc:mysql://localhost:3306/db_cars";
+    private static final String USER = "root";
+    private static final String PASSWORD = "qwerty789";
 
     private static final String TABLE_NAME = "cars";
     private static final String FIELD_MARK = "mark";

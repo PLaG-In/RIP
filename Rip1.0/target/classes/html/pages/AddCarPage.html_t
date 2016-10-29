@@ -18,7 +18,7 @@
             <br>
             <input type="number" name="yearOfCreate">
             <br><br>
-            <input type="hidden" name="method" value="addDrink">
+            <input type="hidden" name="method" value="addCar">
             <input type="submit" value="Submit">
         </form>
         <br><br><br><br>
