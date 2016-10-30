@@ -8,8 +8,8 @@
         %#m
 
         <form action="warehouse" method="GET">
-            <input type="hidden" name="method" value="showAddingForm">
-            <input type="submit" value="Show adding form">
+            <input type="hidden" name="method" value="showMainForm">
+            <input type="submit" value="Show main form">
         </form>
     </body>
 </html>

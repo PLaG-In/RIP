@@ -24,7 +24,7 @@ public class ViewResolver {
     }
 
     public void showAddingView(final PrintWriter writer) {
-        Logger.log(Logger.LogLevel.ANALYTICS, "showAddingForm");
+        Logger.log(Logger.LogLevel.ANALYTICS, "showAddingView");
         try {
             writer.print(new CarAddingView(mServletContext).toHtmlText());
         } catch (HtmlTemplateException ex) {

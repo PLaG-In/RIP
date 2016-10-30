@@ -14,8 +14,7 @@
             Color :<br>
             <input type="text" name="color">
             <br>
-            Year of create :
-            <br>
+            Year of create :<br>
             <input type="number" name="yearOfCreate">
             <br><br>
             <input type="hidden" name="method" value="addCar">

@@ -17,16 +17,21 @@ public class CarsController {
     private static final int MIN_YEAR = 1768;
 
 
-    public static void addCar(final String mark, final String model, final String color, final Integer yearOfCreate){
+    public static void addCar(final String mark, final String model, final String color, final String yearOfCreate){
+        Integer year;
         Calendar calendar = Calendar.getInstance();
         int yearToday = calendar.get(Calendar.YEAR);
-
+        try {
+            year = Integer.parseInt(yearOfCreate);
+        } catch (NumberFormatException ex) {
+            year = 1767;
+        }
         if (model.length() > 0 && model.length() <= MAX_MARK_MODEL_COLOR_LEN
                 && color.length() > 0 && color.length() <= MAX_MARK_MODEL_COLOR_LEN
                 && mark.length() > 0 && mark.length() <= MAX_MARK_MODEL_COLOR_LEN
-                && yearOfCreate >= MIN_YEAR && yearOfCreate <= yearToday){
+                && year >= MIN_YEAR && year <= yearToday){
             try {
-                DBManager.addCar(new Cars(mark, model, color, yearOfCreate));
+                DBManager.addCar(new Cars(mark, model, color, year));
             } catch (SQLException ex) {
                 Logger.log(Logger.LogLevel.CRITICAL, ex);
             } catch (ClassNotFoundException ex) {

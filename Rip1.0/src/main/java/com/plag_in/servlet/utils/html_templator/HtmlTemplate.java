@@ -1,7 +1,7 @@
 package com.plag_in.servlet.utils.html_templator;
 
-import com.sun.istack.internal.NotNull;
 import com.plag_in.servlet.utils.FileUtils;
+import com.sun.istack.internal.NotNull;
 
 import java.io.IOException;
 import java.util.ArrayList;

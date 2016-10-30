@@ -36,7 +36,7 @@ public class MainServlet extends HttpServlet {
             mViewResolver.showAddingView(writer);
         } else if (params.get("method")[0].equals("showAllCars")) {
             mViewResolver.showCarsView(writer, CarsController.getAllCars());
-        } else if (params.get("method")[0].equals("showAddingForm")) {
+        } else if (params.get("method")[0].equals("showMainForm")) {
             mViewResolver.showAddingView(writer);
         } else {
             Logger.log(Logger.LogLevel.INFO, "Unknown post request method - " + req.getMethod());
@@ -53,7 +53,7 @@ public class MainServlet extends HttpServlet {
                     params.get("mark")[0],
                     params.get("model")[0],
                     params.get("color")[0],
-                    Integer.valueOf(params.get("yearOfCreate")[0]));
+                    params.get("yearOfCreate")[0]);
 
             mViewResolver.showAddingView(writer);
         } else {
